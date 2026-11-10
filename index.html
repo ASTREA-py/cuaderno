@@ -78,8 +78,117 @@ body{margin:0;font-family:'Mozilla Text','Inter',Arial,sans-serif;color:var(--in
 .sources p{font-size:10px;line-height:1.42;margin:0;color:#566163}
 .caveat{font-size:9.7px;color:#64706e;line-height:1.4;margin-top:10px}
 @media print{html{background:#fff}.sheet{margin:0;box-shadow:none;break-after:page;page-break-after:always;print-color-adjust:exact;-webkit-print-color-adjust:exact}.sheet:last-child{break-after:auto;page-break-after:auto}@page{size:A4;margin:0}}
-@media screen and (max-width:800px){.sheet{transform-origin:top center;max-width:100%;height:auto;min-height:0;padding:7vw 7vw 60px;margin:0 auto 14px;overflow:visible}.foot{display:none}.cover h1{font-size:clamp(34px,6vw,46px)}.hero{height:220px}.stats{grid-template-columns:1fr 1fr 1fr}.stat .num{font-size:20px}.compare{grid-template-columns:1fr 1fr}}
-@media screen and (max-width:520px){.topright{display:none}.stats,.country-grid,.highlight,.media-row{grid-template-columns:1fr}.stat{border:0;padding:9px 0}.hero{padding:14px}.hero-title{font-size:19px}.compare{grid-template-columns:1fr}.comparecol:last-child{border-left:0;border-top:1px solid #c8d1cd}.sheet{padding:25px 19px 55px}.cover h1{letter-spacing:-1.3px}}
+/* WEB: fluid editorial layout, independent of A4 page dimensions. */
+@media screen {
+  html { background: #e7e9e5; }
+  body { min-width: 0; overflow-x: clip; }
+  .sheet {
+    width: min(940px, calc(100% - 40px));
+    height: auto;
+    min-height: 0;
+    margin: 24px auto;
+    padding: clamp(30px, 5.4vw, 58px);
+    overflow: visible;
+    border-radius: 3px;
+    box-shadow: 0 9px 26px rgba(20,30,30,.09);
+  }
+  .cover h1 { font-size: clamp(39px, 5vw, 57px); }
+  .subtitle { font-size: clamp(16px, 2vw, 18px); }
+  .hero { height: auto; min-height: 240px; }
+  .body { font-size: 16px; line-height: 1.7; margin-bottom: 14px; }
+  .intro { font-size: 16px; line-height: 1.65; }
+  .chapter { font-size: clamp(28px, 3.4vw, 35px); }
+  .compare p { font-size: 14.5px; line-height: 1.6; }
+  .country p { font-size: 14px; line-height: 1.65; }
+  .country { min-height: 0; }
+  .media strong { font-size: 13px; }
+  .media span { font-size: 13px; line-height: 1.6; }
+  .closing p { font-size: 15.5px; line-height: 1.65; }
+  .sidenote { font-size: 13px; line-height: 1.65; }
+  .sources p { font-size: 12px; line-height: 1.5; }
+  .caveat { font-size: 11.5px; }
+  .stat .desc { font-size: 12px; max-width: none; }
+  .stats { gap: 10px; }
+  .media-strip { padding: 20px 22px; }
+  .site-footer {
+    background: #050505;
+    color: #f2eee6;
+    padding: 25px 20px 35px;
+    margin-top: 36px;
+    text-align: center;
+    font-family: 'Mozilla Text', 'Inter', Arial, sans-serif;
+  }
+  .site-footer-inner { max-width: 940px; margin: 0 auto; }
+  .site-footer-line { height: 1px; background: #8a7a57; opacity: .78; width: 100%; margin-bottom: 34px; }
+  .site-footer p { margin: 0; font-size: 12px; line-height: 1.65; letter-spacing: .01em; }
+  .site-footer a { color: #d4b778; text-decoration: none; border-bottom: 1px solid rgba(212,183,120,.5); text-underline-offset: 3px; }
+  .site-footer a:hover { color: #f0d8a5; border-bottom-color: currentColor; }
+  .site-footer a:focus-visible { outline: 2px solid #d4b778; outline-offset: 5px; border-radius: 2px; }
+}
+@media screen and (max-width: 900px) {
+  .sheet { width: min(100% - 32px, 940px); padding: clamp(28px, 5.2vw, 45px); }
+  .country-grid { gap: 18px; }
+  .comparecol { padding: 20px 18px; }
+  .hero { min-height: 220px; }
+}
+@media screen and (max-width: 640px) {
+  html { background: var(--paper); }
+  .sheet {
+    width: 100%;
+    margin: 0;
+    padding: 30px 22px 38px;
+    border-radius: 0;
+    box-shadow: none;
+    border-bottom: 1px solid #d9dfd9;
+  }
+  .topline { align-items: flex-start; flex-direction: column; gap: 8px; margin-bottom: 25px; }
+  .mast { font-size: 15px; }
+  .mast small { font-size: 8px; letter-spacing: 1px; }
+  .topright { display: block; text-align: left; font-size: 9px; line-height: 1.5; }
+  .cover h1 { font-size: clamp(36px, 9vw, 52px); letter-spacing: -1.7px; line-height: 1.05; }
+  .eyebrow { font-size: 9px; letter-spacing: 1.4px; }
+  .subtitle { font-size: 16.5px; line-height: 1.55; }
+  .meta { align-items: flex-start; flex-direction: column; gap: 6px; font-size: 9px; line-height: 1.4; }
+  .hero { min-height: 210px; padding: 22px 19px; gap: 15px; }
+  .hero-title { font-size: clamp(20px, 6vw, 26px); }
+  .hero-bottom { font-size: 9px; flex-shrink: 0; }
+  .hero:after { right: -220px; }
+  .stats { grid-template-columns: 1fr; gap: 0; padding: 4px 0; margin-bottom: 28px; }
+  .stat { border: 0; border-top: 1px solid #d1d5d1; padding: 13px 0; display: grid; grid-template-columns: minmax(105px, .6fr) 1fr; gap: 15px; align-items: start; }
+  .stat:first-child { border-top: 0; padding-left: 0; }
+  .stat .num { font-size: clamp(20px, 5.7vw, 26px); }
+  .stat .desc { margin-top: 0; font-size: 12.4px; }
+  .section-kicker { font-size: 9px; }
+  .chapter { font-size: clamp(26px, 6.5vw, 34px); line-height: 1.2; }
+  .body, .intro { font-size: 15.5px; line-height: 1.75; }
+  .two-cols, .country-grid, .media-row, .highlight, .sources { grid-template-columns: 1fr; }
+  .compare { grid-template-columns: 1fr; margin: 20px 0; }
+  .comparecol { min-height: 0; padding: 24px 22px; }
+  .comparecol:last-child { border-left: 0; border-top: 1px solid #c8d1cd; }
+  .year { font-size: 37px; }
+  .pullquote { font-size: clamp(23px, 5.8vw, 28px); margin: 24px 0; }
+  .country-grid { row-gap: 18px; }
+  .country { padding-top: 14px; }
+  .country p { font-size: 14.5px; }
+  .media-strip { padding: 20px; margin: 20px 0; }
+  .media-row { gap: 16px; }
+  .media { padding-left: 12px; }
+  .highlight { gap: 15px; padding: 22px; }
+  .highlight .right { border-left: 0; border-top: 1px solid #66807e; padding: 15px 0 0; font-size: 14px; }
+  .closing h3 { font-size: 22px; }
+  .site-footer { margin-top: 0; padding: 22px 22px 36px; }
+  .site-footer-line { margin-bottom: 28px; }
+  .site-footer p { font-size: 11.5px; }
+}
+@media screen and (max-width: 370px) {
+  .sheet { padding-left: 17px; padding-right: 17px; }
+  .mast small { display: block; margin-left: 0; margin-top: 4px; }
+  .hero { min-height: 220px; flex-direction: column; align-items: flex-start; justify-content: space-between; }
+  .hero-bottom { align-self: flex-end; }
+  .stat { grid-template-columns: 1fr; gap: 3px; }
+  .stat .desc { max-width: 100%; }
+}
+@media print { .site-footer { display: none; } }
 </style>
 </head>
 <body>
@@ -95,7 +204,7 @@ body{margin:0;font-family:'Mozilla Text','Inter',Arial,sans-serif;color:var(--in
 <h2 class="chapter">El origen de la crisis: ueno bank, el poder político y las instituciones paraguayas</h2>
 <p class="body">El Banco Central del Paraguay inició el <strong>3 de noviembre</strong> la resolución de ueno bank tras constatar una grave insuficiencia de solvencia. La suspensión de operaciones afectó a millones de usuarios y dejó expuestos recursos de entidades como el IPS y organismos públicos. La cifra de depósitos comprometidos no debe confundirse con una pérdida definitiva.</p>
 <p class="body">El caso adquirió dimensión política por los vínculos empresariales previos de Peña con el conglomerado propietario del banco y por cuestionamientos a la supervisión financiera. Tras el juicio político, el mandatario fue destituido el 6 de noviembre; él niega haber cometido delitos. <strong>La pregunta pendiente es si existieron deficiencias de control, omisiones deliberadas o favorecimiento indebido.</strong></p>
-<div class="foot"><span>Cuaderno / lectura editorial</span><span>01 — 04</span></div>
+
 </section>
 <section class="sheet">
 <div class="topline"><div class="mast">CUADERNO <small>análisis internacional</small></div><div class="topright">El espejo histórico / 2012—2026</div></div>
@@ -107,7 +216,7 @@ body{margin:0;font-family:'Mozilla Text','Inter',Arial,sans-serif;color:var(--in
 <div class="pullquote">La repercusión internacional no depende solo de la gravedad de una crisis, sino también de cómo se interpreta la legitimidad de la respuesta del Estado.</div>
 <p class="body">La comparación no equivale a afirmar que los procedimientos actuales carezcan de cuestionamientos jurídicos. Muestra, más bien, que la política regional responde a la combinación de normas democráticas, circunstancias concretas e intereses entre Estados.</p>
 <div class="sidenote"><strong>Clave de lectura.</strong> Reconocer a un nuevo presidente no significa aprobar la conducta del gobierno saliente ni adelantar una conclusión sobre las investigaciones.</div>
-<div class="foot"><span>Historia y diplomacia / Paraguay</span><span>02 — 04</span></div>
+
 </section>
 <section class="sheet">
 <div class="topline"><div class="mast">CUADERNO <small>análisis internacional</small></div><div class="topright">Diplomacia / Sudamérica y Europa</div></div>
@@ -123,7 +232,7 @@ body{margin:0;font-family:'Mozilla Text','Inter',Arial,sans-serif;color:var(--in
 <div class="media-strip"><h3>La mirada de la prensa internacional</h3><div class="media-row"><div class="media"><strong>The Guardian</strong><span>Puso el foco en los ahorristas, las protestas y el costo social de las cuentas congeladas.</span></div><div class="media"><strong>Reuters</strong><span>Reconstruyó la expansión de ueno y el paso de una crisis bancaria a una crisis presidencial.</span></div><div class="media"><strong>Financial Times</strong><span>Analizó la tensión entre el atractivo inversor de Paraguay y sus debilidades institucionales.</span></div></div></div>
 <p class="body">La cobertura en medios europeos demuestra que <strong>la noticia no pasó desapercibida</strong>. Pero difusión periodística no es lo mismo que conflicto diplomático: una cancillería puede mantener relaciones estables mientras una empresa revisa sus decisiones de inversión.</p>
 <p class="body">En ese contraste aparece la verdadera dimensión exterior del caso: la crisis no necesariamente aísla a Paraguay, pero sí abre preguntas sobre la previsibilidad de sus reglas y la confianza en quienes deben hacerlas cumplir.</p>
-<div class="foot"><span>El mapa exterior / perspectiva internacional</span><span>03 — 04</span></div>
+
 </section>
 <section class="sheet">
 <div class="topline"><div class="mast">CUADERNO <small>análisis internacional</small></div><div class="topright">Riesgo país / Perspectivas</div></div>
@@ -144,7 +253,14 @@ body{margin:0;font-family:'Mozilla Text','Inter',Arial,sans-serif;color:var(--in
 <p><a href="https://www.subrayado.com.uy/canciller-confirmo-la-presencia-del-nuevo-presidente-paraguay-la-cumbre-del-mercosur-diciembre-n1023073">Subrayado (Uruguay)</a> · 9 nov. 2026 · Reacción regional.</p>
 </div>
 <div class="caveat">Análisis editorial elaborado con información disponible al 10 de noviembre de 2026. Las investigaciones y la resolución bancaria siguen abiertas. Las hipótesis no constituyen hechos judicialmente probados.</div>
-<div class="foot"><span>Cierre / instituciones y confianza</span><span>04 — 04</span></div>
+
 </section>
+
+<footer class="site-footer" aria-label="Créditos del sitio">
+  <div class="site-footer-inner">
+    <div class="site-footer-line" aria-hidden="true"></div>
+    <p>This site was made with all the love of the world in the <a href="https://www.instagram.com/plasma.ws/" target="_blank" rel="noopener noreferrer">Plasma Workspace</a></p>
+  </div>
+</footer>
 </body>
 </html>
